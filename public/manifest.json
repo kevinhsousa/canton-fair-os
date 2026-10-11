@@ -1,0 +1,22 @@
+{
+  "name": "Canton Fair OS — Trade & Landed Cost Intelligence",
+  "short_name": "Canton OS",
+  "description": "Calculadora de Importação de Campo e Cadastro de Fornecedores da Canton Fair",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070D1E",
+  "theme_color": "#0B142B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
