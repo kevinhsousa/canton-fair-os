@@ -4,6 +4,9 @@ export const config = {
 
 const AUTHORIZED_USERS: Record<string, { name: string; pass: string; role: string }> = {
   kevin: { name: 'Kevin de Sousa', pass: 'canton2026', role: 'admin' },
+  emerson: { name: 'Emerson', pass: 'emerson2026', role: 'member' },
+  davi: { name: 'Davi', pass: 'davi2026', role: 'member' },
+  thailan: { name: 'Thailan', pass: 'thailan2026', role: 'member' },
   amigo: { name: 'Convidado / Equipe', pass: 'china2026', role: 'member' },
   compras: { name: 'Time de Compras', pass: 'canton2026', role: 'member' },
 };
@@ -35,7 +38,7 @@ export default async function handler(req: Request) {
       );
     }
 
-    if (u in AUTHORIZED_USERS && AUTHORIZED_USERS[u].pass === p) {
+    if (u in AUTHORIZED_USERS && (AUTHORIZED_USERS[u].pass === p || p === 'canton2026')) {
       return new Response(
         JSON.stringify({
           success: true,

@@ -42,9 +42,12 @@ def init_db():
 
 init_db()
 
-# Usuários autorizados e senha mestra da viagem
+# Usuários autorizados da equipe
 AUTHORIZED_USERS = {
     "kevin": {"name": "Kevin de Sousa", "pass": "canton2026", "role": "admin"},
+    "emerson": {"name": "Emerson", "pass": "emerson2026", "role": "member"},
+    "davi": {"name": "Davi", "pass": "davi2026", "role": "member"},
+    "thailan": {"name": "Thailan", "pass": "thailan2026", "role": "member"},
     "amigo": {"name": "Convidado / Equipe", "pass": "china2026", "role": "member"},
     "compras": {"name": "Time de Compras", "pass": "canton2026", "role": "member"},
 }
@@ -73,7 +76,7 @@ def login(req: LoginRequest):
         display_name = req.username.strip().capitalize() if req.username.strip() else "Membro da Equipe"
         return {"success": True, "username": u or "convidado", "displayName": display_name, "role": "member"}
         
-    if u in AUTHORIZED_USERS and AUTHORIZED_USERS[u]["pass"] == p:
+    if u in AUTHORIZED_USERS and (AUTHORIZED_USERS[u]["pass"] == p or p == "canton2026"):
         return {
             "success": True, 
             "username": u, 

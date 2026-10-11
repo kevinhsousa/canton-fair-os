@@ -62,7 +62,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
               Acesso da Equipe
             </h2>
             <p className="text-xs text-canton-dim mt-0.5">
-              Entre com seu usuário para centralizar e sincronizar todos os fornecedores cadastrados.
+              Entre com seu perfil para centralizar fornecedores e custos com o grupo.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Ex: kevin, amigo, felipe..."
+                  placeholder="Ex: kevin, emerson, davi, thailan..."
                   className="w-full bg-canton-dark border border-canton-border rounded-xl pl-9 pr-3 py-2.5 text-xs text-canton-cream focus:outline-none focus:border-canton-gold font-mono"
                   required
                 />
@@ -94,7 +94,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Senha pessoal ou senha mestra"
+                  placeholder="Senha pessoal ou CANTON2026"
                   className="w-full bg-canton-dark border border-canton-border rounded-xl pl-9 pr-3 py-2.5 text-xs text-canton-cream focus:outline-none focus:border-canton-gold font-mono"
                   required
                 />
@@ -122,10 +122,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
             </button>
           </form>
 
-          {/* Atalhos de Acesso Rápido para Amigos */}
+          {/* Atalhos Rápidos para Kevin, Emerson, Davi e Thailan */}
           <div className="pt-3 border-t border-canton-borderSoft space-y-2">
             <span className="text-[10px] font-mono uppercase text-canton-dim block text-center">
-              Acesso Rápido da Equipe:
+              Acesso Rápido — 1 Toque:
             </span>
             <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
               <button
@@ -133,21 +133,39 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 onClick={() => handleQuickLogin('kevin', 'canton2026')}
                 className="bg-canton-dark hover:bg-canton-navy border border-canton-borderSoft rounded-lg p-2 text-left transition-colors"
               >
-                <div className="text-canton-cream font-bold">Kevin de Sousa</div>
+                <div className="text-canton-cream font-bold truncate">Kevin de Sousa</div>
                 <div className="text-[10px] text-canton-gold">Admin</div>
               </button>
 
               <button
                 type="button"
-                onClick={() => handleQuickLogin('amigo', 'china2026')}
+                onClick={() => handleQuickLogin('emerson', 'emerson2026')}
                 className="bg-canton-dark hover:bg-canton-navy border border-canton-borderSoft rounded-lg p-2 text-left transition-colors"
               >
-                <div className="text-canton-cream font-bold">Convidado / Amigo</div>
+                <div className="text-canton-cream font-bold truncate">Emerson</div>
+                <div className="text-[10px] text-canton-dim">Equipe</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleQuickLogin('davi', 'davi2026')}
+                className="bg-canton-dark hover:bg-canton-navy border border-canton-borderSoft rounded-lg p-2 text-left transition-colors"
+              >
+                <div className="text-canton-cream font-bold truncate">Davi</div>
+                <div className="text-[10px] text-canton-dim">Equipe</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleQuickLogin('thailan', 'thailan2026')}
+                className="bg-canton-dark hover:bg-canton-navy border border-canton-borderSoft rounded-lg p-2 text-left transition-colors"
+              >
+                <div className="text-canton-cream font-bold truncate">Thailan</div>
                 <div className="text-[10px] text-canton-dim">Equipe</div>
               </button>
             </div>
             <p className="text-[10px] text-canton-dim text-center">
-              Dica: a senha mestra <strong className="text-canton-gold font-mono">CANTON2026</strong> libera acesso para qualquer nome.
+              Senha padrão de cada um: <strong className="text-canton-gold font-mono">[nome]2026</strong> ou a mestra <strong className="text-canton-gold font-mono">CANTON2026</strong>.
             </p>
           </div>
         </div>

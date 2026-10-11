@@ -26,6 +26,14 @@ export function clearStoredUser() {
   localStorage.removeItem(AUTH_STORAGE_KEY);
 }
 
+const LOCAL_TEAM: Record<string, { name: string; pass: string }> = {
+  kevin: { name: 'Kevin de Sousa', pass: 'canton2026' },
+  emerson: { name: 'Emerson', pass: 'emerson2026' },
+  davi: { name: 'Davi', pass: 'davi2026' },
+  thailan: { name: 'Thailan', pass: 'thailan2026' },
+  amigo: { name: 'Convidado / Equipe', pass: 'china2026' },
+};
+
 export async function loginUser(username: string, password: string): Promise<AuthUser> {
   const u = username.trim().toLowerCase();
   const p = password.trim();
@@ -53,10 +61,11 @@ export async function loginUser(username: string, password: string): Promise<Aut
   }
 
   // 2. Fallback de Segurança Offline no Pavilhão (sem internet na feira)
-  if (p.toUpperCase() === 'CANTON2026' || (u === 'kevin' && p === 'canton2026') || (u === 'amigo' && p === 'china2026')) {
+  if (p.toUpperCase() === 'CANTON2026' || (LOCAL_TEAM[u] && (LOCAL_TEAM[u].pass === p || p === 'canton2026'))) {
+    const displayName = LOCAL_TEAM[u] ? LOCAL_TEAM[u].name : u ? u.charAt(0).toUpperCase() + u.slice(1) : 'Membro Equipe';
     const user: AuthUser = {
       username: u || 'convidado',
-      displayName: u === 'kevin' ? 'Kevin de Sousa' : u ? u.charAt(0).toUpperCase() + u.slice(1) : 'Membro Equipe',
+      displayName,
       role: u === 'kevin' ? 'admin' : 'member',
     };
     saveStoredUser(user);
